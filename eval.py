@@ -187,6 +187,8 @@ class PupilEval():
                 self.fixation(fix_time, 'eyelink')
                 self.el_tracker.sendMessage('gabor_%d' % (i))
                 self.gabor(gabor_time, 'eyelink')
+                end_of_trial_status_message = 'TRIAL %d/%d' % (int(i+1), str(n_reps))
+                self.el_tracker.sendCommand("record_status_message '%s'" % end_of_trial_status_message)
 
     def quit_experiment(self):
         self.experiment_window.close()
